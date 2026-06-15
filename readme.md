@@ -1,4 +1,4 @@
-# Bayesian Statistical Modelling with Stan and brms
+# Introduction to Bayesian Data Analysis using R
 
 This intensive workshop provides a comprehensive introduction to Bayesian data analysis for empirical researchers.
 The course covers both theoretical foundations and practical implementation, teaching participants how to conduct Bayesian statistical inference using Stan via the brms package in R.
