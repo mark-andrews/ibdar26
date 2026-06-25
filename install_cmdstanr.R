@@ -3,7 +3,7 @@
 # brms-generated Stan code
 # ↓
 # CmdStan translates Stan to C++
-#   ↓
+# ↓
 # C++ compiler builds a model-specific executable
 # ↓
 # CmdStan runs NUTS/HMC using that executable
