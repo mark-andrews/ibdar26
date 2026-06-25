@@ -42,8 +42,31 @@ stancode(M_2)
 
 prior_summary(M_2)
 
+get_prior(weight ~ height + gender, 
+           data = weight_df,
+           backend = 'cmdstanr')
+
 M_3 <- lm(weight ~ height + gender, data = weight_df)
 summary(M_3)
 
-M_4 <- brm(weight ~ height + gender, data = weight_df,
+M_4 <- brm(weight ~ height + gender, 
+           data = weight_df,
            backend = 'cmdstanr')
+
+M_5 <- brm(weight ~ height + gender, 
+           data = weight_df,
+           prior = set_prior("normal(0, 10)"),
+           backend = 'cmdstanr')
+
+prior_summary(M_5)
+
+
+M_6 <- brm(weight ~ height + gender, 
+           data = weight_df,
+           prior = set_prior("normal(0, 10)", class = 'b', coef = 'height'),
+           backend = 'cmdstanr')
+prior_summary(M_6)
+
+
+fixef(M_4)
+fixef(M_6)
