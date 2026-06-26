@@ -187,3 +187,6 @@ ggplot(sleepstudy,
        aes(x = Days, y = Reaction)
 ) + geom_point() + geom_smooth(method = 'lm', se = F) + 
   facet_wrap(~Subject)
+
+M_15 <- lmer(Reaction ~ Days + (Days|Subject),
+             data = sleepstudy)
