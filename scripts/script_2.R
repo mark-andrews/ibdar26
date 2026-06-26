@@ -87,3 +87,17 @@ M_7 <- brm(weight ~ height + gender,
            data = weight_df,
            prior = new_priors,
            backend = 'cmdstanr')
+
+fixef(M_7)
+fixef(M_4)
+summary(M_7)
+summary(M_4)
+
+M_8 <- lm(weight ~ height + gender, data = weight_df)
+summary(M_8)$r.sq
+
+var(predict(M_8)) / var(weight_df$weight)
+
+bayes_R2(M_7)
+
+
