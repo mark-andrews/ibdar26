@@ -140,3 +140,11 @@ ggplot(weight_df, aes(x = height, y = weight, colour = gender)) +
   geom_point(size = 0.5, alpha = 0.5) +
   geom_smooth(method = 'lm', fullrange = T) + 
   theme_classic()
+
+
+M_12 <- brm(
+  bf(weight ~ height + gender + age, 
+     sigma ~ height + gender + age),
+  save_pars = save_pars(all=TRUE),
+  data = weight_df)
+
