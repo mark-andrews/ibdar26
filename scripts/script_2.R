@@ -70,7 +70,7 @@ prior_summary(M_6)
 new_priors <- c(
  set_prior("normal(0, 10)", class = 'b', coef = 'height'),
  set_prior("normal(0, 50)", class = 'b', coef = 'gendermale'),
- set_prior("", class = 'Intercept')
+ set_prior("student_t(5, 80, 20)", class = 'Intercept')
  
 )
 
