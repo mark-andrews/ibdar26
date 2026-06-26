@@ -190,3 +190,16 @@ ggplot(sleepstudy,
 
 M_15 <- lmer(Reaction ~ Days + (Days|Subject),
              data = sleepstudy)
+summary(M_15)
+
+M_16 <- brm(Reaction ~ Days + (Days|Subject),
+            cores = 4,
+            data = sleepstudy)
+
+M_16
+
+mcmc_plot(M_16, type = 'hist', variable = 'cor_Subject__Intercept__Days')
+
+prior_summary(M_16)
+
+M_17 <- lmer(mathscore ~ ses + (ses|schoolid) + (ses|classid), data = classroom_df)
