@@ -174,3 +174,16 @@ M_14 <- brm(publications ~ gender + married + children + prestige + mentor,
             family = negbinomial(),
             cores = 4,
             data = biochemists_df)
+
+pp_check(M_13, ndraws = 100)
+pp_check(M_14, ndraws = 100)
+
+waic(M_13, M_14)
+loo(M_13, M_14)
+
+library(lme4)
+
+ggplot(sleepstudy,
+       aes(x = Days, y = Reaction)
+) + geom_point() + geom_smooth(method = 'lm', se = F) + 
+  facet_wrap(~Subject)
