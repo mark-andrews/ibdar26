@@ -100,4 +100,25 @@ var(predict(M_8)) / var(weight_df$weight)
 
 bayes_R2(M_7)
 
+M_9 <- lm(weight ~ height + gender + age, data = weight_df)
+
+anova(M_8, M_9)
+summary(M_9)$coef
+
+AIC(M_8)
+AIC(M_9)
+AIC(M_8) - AIC(M_9) # Delta AIC
+-2 * logLik(M_8) + 2*4 # -2 LL + 2K
+-2 * logLik(M_9) + 2*5 # -2 LL + 2K
+
+
+
+M_10 <- brm(weight ~ height + gender, 
+            save_pars = save_pars(all=TRUE),
+            data = weight_df)
+
+M_11 <- brm(weight ~ height + gender + age, 
+            save_pars = save_pars(all=TRUE),
+            data = weight_df)
+
 
