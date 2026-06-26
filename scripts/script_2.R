@@ -203,3 +203,10 @@ mcmc_plot(M_16, type = 'hist', variable = 'cor_Subject__Intercept__Days')
 prior_summary(M_16)
 
 M_17 <- lmer(mathscore ~ ses + (ses|schoolid) + (ses|classid), data = classroom_df)
+M_18 <- lmer(mathscore ~ ses + (ses|schoolid) + (ses||classid), data = classroom_df)
+
+M_19 <- brm(mathscore ~ ses + (ses|schoolid) + (ses|classid),
+            cores = 4,
+            data = classroom_df)
+
+M_19
