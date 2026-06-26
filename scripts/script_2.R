@@ -70,9 +70,15 @@ prior_summary(M_6)
 new_priors <- c(
  set_prior("normal(0, 10)", class = 'b', coef = 'height'),
  set_prior("normal(0, 50)", class = 'b', coef = 'gendermale'),
- set_prior("student_t(5, 80, 20)", class = 'Intercept')
- 
+ set_prior("student_t(5, 80, 20)", class = 'Intercept'),
+ set_prior("student_t(1, 0, 20)", class = 'sigma')
 )
 
+s <- rt(1e6, df = 5) * 20 + 80
+quantile(s, probs = c(0.005, 0.995))
+
+s <- rt(1e6, df = 1) * 20 
+quantile(abs(s), probs = c(0.005, 0.5, 0.75, .9, 0.995))
+ 
 fixef(M_4)
 fixef(M_6)
