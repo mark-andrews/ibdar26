@@ -150,3 +150,27 @@ M_12 <- brm(
   save_pars = save_pars(all=TRUE),
   data = weight_df)
 
+M_12
+
+pp_check(M_12, ndraws = 100)
+waic(M_11, M_12)
+
+
+# Generalized linear models -----------------------------------------------
+
+biochemists_df |> count(publications)
+
+# normal linear
+M_12 <- brm(publications ~ gender + married + children + prestige + mentor,
+            data = biochemists_df)
+
+# generlized linear
+M_13 <- brm(publications ~ gender + married + children + prestige + mentor,
+            family = poisson(),
+            cores = 4,
+            data = biochemists_df)
+
+M_14 <- brm(publications ~ gender + married + children + prestige + mentor,
+            family = negbinomial(),
+            cores = 4,
+            data = biochemists_df)
