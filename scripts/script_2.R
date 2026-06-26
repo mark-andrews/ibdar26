@@ -145,6 +145,8 @@ ggplot(weight_df, aes(x = height, y = weight, colour = gender)) +
 M_12 <- brm(
   bf(weight ~ height + gender + age, 
      sigma ~ height + gender + age),
+  cores = 4,
+  family = student(),
   save_pars = save_pars(all=TRUE),
   data = weight_df)
 
