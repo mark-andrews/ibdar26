@@ -67,6 +67,12 @@ M_6 <- brm(weight ~ height + gender,
            backend = 'cmdstanr')
 prior_summary(M_6)
 
+new_priors <- c(
+ set_prior("normal(0, 10)", class = 'b', coef = 'height'),
+ set_prior("normal(0, 50)", class = 'b', coef = 'gendermale'),
+ set_prior("", class = 'Intercept')
+ 
+)
 
 fixef(M_4)
 fixef(M_6)
