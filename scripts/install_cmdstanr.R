@@ -51,5 +51,5 @@ M1 <- brm(
   data = data_df,
   chains = 2,
   # cores = 2,
-  backend = "cmdstanr"
+  # backend = "cmdstanr"
 )
