@@ -121,4 +121,5 @@ M_11 <- brm(weight ~ height + gender + age,
             save_pars = save_pars(all=TRUE),
             data = weight_df)
 
-
+loo(M_10)
+loo(M_11)
