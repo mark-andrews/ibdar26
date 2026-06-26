@@ -66,6 +66,9 @@ M_6 <- brm(weight ~ height + gender,
            prior = set_prior("normal(0, 10)", class = 'b', coef = 'height'),
            backend = 'cmdstanr')
 prior_summary(M_6)
+ 
+fixef(M_4)
+fixef(M_6)
 
 new_priors <- c(
  set_prior("normal(0, 10)", class = 'b', coef = 'height'),
@@ -79,6 +82,8 @@ quantile(s, probs = c(0.005, 0.995))
 
 s <- rt(1e6, df = 1) * 20 
 quantile(abs(s), probs = c(0.005, 0.5, 0.75, .9, 0.995))
- 
-fixef(M_4)
-fixef(M_6)
+
+M_7 <- brm(weight ~ height + gender, 
+           data = weight_df,
+           prior = new_priors,
+           backend = 'cmdstanr')
