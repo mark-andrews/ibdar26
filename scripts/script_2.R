@@ -123,3 +123,20 @@ M_11 <- brm(weight ~ height + gender + age,
 
 loo(M_10)
 loo(M_11)
+
+loo(M_10, M_11)
+
+44694.5 - 44270.1 # DELTA looic 
+-212.2 * -2
+
+waic(M_10, M_11)
+
+# Posterior predictive checks
+pp_check(M_11)
+pp_check(M_11, ndraws = 100)
+
+
+ggplot(weight_df, aes(x = height, y = weight, colour = gender)) +
+  geom_point(size = 0.5, alpha = 0.5) +
+  geom_smooth(method = 'lm', fullrange = T) + 
+  theme_classic()
